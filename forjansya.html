@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Приглашение на свидание</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    h1 {
+      color: #d6336c;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .form-field {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .btn {
+      background: #d6336c;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e75480;
+    }
+
+    .firework, .cupid, .hearts, .background-glow {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .firework {
+      width: 100px;
+      height: 100px;
+      background: url('https://media.giphy.com/media/26FL1soZ3STRDSLGU/giphy.gif') no-repeat center;
+      background-size: cover;
+      top: 10%;
+      left: 10%;
+      animation: float 6s infinite;
+    }
+
+    .cupid {
+      width: 150px;
+      height: 150px;
+      background: url('https://media.giphy.com/media/3o7qE1YN7aBOFPRw8E/giphy.gif') no-repeat center;
+      background-size: contain;
+      top: 30px;
+      right: 30px;
+    }
+
+    .hearts {
+      width: 150px;
+      height: 150px;
+      background: url('https://media.giphy.com/media/l0MYJwV7oJ4kRkVna/giphy.gif') no-repeat center;
+      background-size: contain;
+      bottom: 10px;
+      left: 10px;
+    }
+
+    .background-glow {
+      width: 100%;
+      height: 100%;
+      background: url('https://media.giphy.com/media/xT1R9TWvkpAIIBHkM8/giphy.gif') no-repeat center;
+      background-size: cover;
+      opacity: 0.3;
+      top: 0;
+      left: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-glow"></div>
+  <div class="firework"></div>
+  <div class="cupid"></div>
+  <div class="hearts"></div>
+
+  <div class="container">
+    <h1>💌 Приглашение на свидание</h1>
+    <div class="form-field"><strong>Мужчина:</strong> Данияр Бауыржанович</div>
+    <div class="form-field"><strong>Девушка:</strong> Жансай Кайраткызы</div>
+    <div class="form-field"><strong>Место:</strong> Пока не известно</div>
+    <div class="form-field"><strong>Дата:</strong> Как приеду с Астаны</div>
+    <button class="btn">Соглашаюсь ❤️</button>
+  </div>
+
+</body>
+
+<!-- Вставить в HTML ниже кнопки -->
+<script>
+    document.querySelector(".btn").addEventListener("click", function () {
+      window.open("invitation.pdf", "_blank");
+    });
+  </script>
+  
+
+</html>
