@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Приглашение</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fff5e1, #ffe6f0);
+      padding: 20px;
+      margin: 0;
+      position: relative;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .header-img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+    }
+    .content {
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #b33357;
+    }
+    p {
+      line-height: 1.5;
+    }
+    form {
+      margin-top: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .radio-group {
+      margin-bottom: 15px;
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+    .radio-option input[type="radio"] {
+      margin-right: 10px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6384;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #e75470;
+    }
+    .music-icon {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 999;
+    }
+    .music-icon img {
+      width: 48px;
+      height: 48px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 2px #ff6384);
+    }
+    @media (max-width: 600px) {
+      .music-icon img {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://restolife.kz/upload/information_system_6/2/6/0/item_26050/information_items_property_33630.jpg" alt="Ресторан Панаехали" class="header-img">
+    <div class="content">
+      <h1>ПРИГЛАШЕНИЕ</h1>
+      <h2>29 мая 2025 года, 20:00<br>Ресторан "Панаехали" — VIP кабина</h2>
+      <p><strong>Темы вечера:</strong><br>
+        1. Выход на заслуженный отдых<br>
+        2. Переезд в г. Алматы<br>
+        3. Приобретение железного коня 🚗</p>
+
+      <form name="inviteForm" onsubmit="return handleSubmit(event)">
+        <label for="name">ФИО:</label>
+        <input type="text" id="name" name="name" required />
+
+        <p><strong>Ваш ответ:</strong></p>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="one" name="attendance" value="Буду один (одна)" required>
+            <label for="one">Буду один (одна)</label>
+          </div>
+
+          <div class="radio-option">
+            <input type="radio" id="two" name="attendance" value="Будем вдвоем">
+            <label for="two">Будем вдвоем</label>
+          </div>
+
+          <div class="radio-option">
+            <input type="radio" id="no" name="attendance" value="Извините, не придём">
+            <label for="no">Извините, не придём</label>
+          </div>
+        </div>
+
+        <button type="submit">Отправить ответ</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Фоновая музыка -->
+  <audio id="background-audio" autoplay loop muted>
+  <source src="https://cdn.pixabay.com/download/audio/2022/11/16/audio_ee98a147e8.mp3?filename=classical-piano-soft-background-music-125997.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудио.
+    </audio>
+
+
+  <!-- Иконка музыки -->
+  <div class="music-icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Музыка играет" title="Фоновая музыка">
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxfcsww_MvJouW24X4ubJN6zUCj6dXabDlEKF8DrwaCfzjjgpSiv9o0CE1DrZVCL40zXQ/exec';
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = document.forms['inviteForm'];
+      const data = new FormData(form);
+      fetch(scriptURL, { method: 'POST', body: data })
+        .then(() => {
+          alert('Спасибо! Ваш ответ отправлен.');
+          form.reset();
+        })
+        .catch(error => alert('Ошибка при отправке. Попробуйте позже.'));
+    }
+     // Автоматический запуск музыки для мобильных браузеров (ограниченно)
+    window.addEventListener('click', function () {
+    const audio = document.getElementById('background-audio');
+    audio.muted = false;
+    audio.play();
+    }, { once: true });
+  </script>
+</body>
+</html>
