@@ -80,23 +80,17 @@
     button:hover {
       background-color: #e75470;
     }
-    .music-icon {
-      position: fixed;
-      left: 20px;
-      bottom: 20px;
-      z-index: 999;
+    .map-link {
+      text-align: center;
+      margin-top: 25px;
     }
-    .music-icon img {
-      width: 48px;
-      height: 48px;
-      opacity: 0.9;
-      filter: drop-shadow(0 0 2px #ff6384);
+    .map-link a {
+      color: #b33357;
+      text-decoration: none;
+      font-weight: bold;
     }
-    @media (max-width: 600px) {
-      .music-icon img {
-        width: 36px;
-        height: 36px;
-      }
+    .map-link a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -104,7 +98,7 @@
   <div class="container">
     <img src="https://restolife.kz/upload/information_system_6/2/6/0/item_26050/information_items_property_33630.jpg" alt="Ресторан Панаехали" class="header-img">
     <div class="content">
-      <h1>ПРИГЛАШЕНИЕ</h1>
+      <h1>Нуржан и Аида приглашают вас</h1>
       <h2>29 мая 2025 года, 20:00<br>Ресторан "Панаехали" — VIP кабина</h2>
       <p><strong>Темы вечера:</strong><br>
         1. Выход на заслуженный отдых<br>
@@ -135,21 +129,12 @@
 
         <button type="submit">Отправить ответ</button>
       </form>
+
+      <div class="map-link">
+        📍 <a href="https://go.2gis.com/nCbAr" target="_blank">Посмотреть на карте (2ГИС)</a>
+      </div>
     </div>
   </div>
-
-  <!-- Фоновая музыка -->
-  <audio id="background-audio" autoplay loop muted>
-  <source src="https://cdn.pixabay.com/download/audio/2022/11/16/audio_ee98a147e8.mp3?filename=classical-piano-soft-background-music-125997.mp3" type="audio/mpeg">
-  Ваш браузер не поддерживает аудио.
-    </audio>
-
-
-  <!-- Иконка музыки -->
-  <div class="music-icon">
-    <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Музыка играет" title="Фоновая музыка">
-  </div>
-
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxfcsww_MvJouW24X4ubJN6zUCj6dXabDlEKF8DrwaCfzjjgpSiv9o0CE1DrZVCL40zXQ/exec';
 
@@ -164,12 +149,6 @@
         })
         .catch(error => alert('Ошибка при отправке. Попробуйте позже.'));
     }
-     // Автоматический запуск музыки для мобильных браузеров (ограниченно)
-    window.addEventListener('click', function () {
-    const audio = document.getElementById('background-audio');
-    audio.muted = false;
-    audio.play();
-    }, { once: true });
   </script>
 </body>
 </html>
